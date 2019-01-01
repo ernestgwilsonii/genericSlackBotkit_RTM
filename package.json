@@ -1,0 +1,32 @@
+{
+  "name": "botkit-slack-rtm-starter",
+  "version": "1.0.0",
+  "description": "Botkit using RTM (outbound websockets), no inbound ports (events API) needed!",
+  "main": "bot.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ernestgwilsonii/genericSlackBotkit_RTM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ernestgwilsonii/genericSlackBotkit_RTM/issues"
+  },
+  "homepage": "https://github.com/ernestgwilsonii/genericSlackBotkit_RTM",
+  "keywords": [
+    "bots",
+    "chatops",
+    "slack",
+    "rtm"
+  ],
+  "author": {
+    "email": "ErnestGWilsonII@gmail.com",
+    "name": "Ernest G. Wilson II",
+    "url": "https://github.com/ernestgwilsonii"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "^0.7.0",
+    "wordfilter": "^0.2.6"
+  },
+  "devDependencies": {}
+}
