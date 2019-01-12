@@ -8,7 +8,7 @@ const { chatOpsLogger } = require('./lib/chatOpsLogger');
 ////////////////////////////////////////////////////////////////////////////////
 // Make sure we have a Slack token
 if (!process.env.token) {
-    console.log('Error: Specify a Slack bot token in environment.');
+    console.log("ERROR: Specify a Slack bot token in the environment!");
     usage_tip();
     process.exit(1);
 }
@@ -33,10 +33,10 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 
 // Display CLI help
 function usage_tip() {
-    console.log('Execute your bot application like this:');
-    console.log('npm install');
-    console.log('token=<MY SLACK TOKEN> node bot.js');
-    console.log('Get a Slack token here: https://my.slack.com/apps/new/A0F7YS25R-bots');
+    console.log("Execute your bot application like this:");
+    console.log("npm install");
+    console.log("token=<MY SLACK TOKEN> node bot.js");
+    console.log("Get a Slack token here: https://my.slack.com/apps/new/A0F7YS25R-bots");
 }
 ////////////////////////////////////////////////////////////////////////////////
 
