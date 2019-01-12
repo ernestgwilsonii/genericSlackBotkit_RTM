@@ -35,7 +35,7 @@ require("fs").readdirSync(normalizedPath).forEach(function (file) {
 function usage_tip() {
     console.log("Execute your bot application like this:");
     console.log("npm install");
-    console.log("token=<MY SLACK TOKEN> node bot.js");
+    console.log("token=YourSlackToken node bot.js");
     console.log("Get a Slack token here: https://my.slack.com/apps/new/A0F7YS25R-bots");
 }
 ////////////////////////////////////////////////////////////////////////////////
