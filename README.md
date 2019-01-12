@@ -26,4 +26,10 @@ Launch the bot:
 token=YourSlackTokenGoesHere node .
 ```
 
+Docker:
+```
+./docker_buil.sh
+docker run -it --rm --name perceptron -e token=xoxb-NNNNNNNNNNN-NNNNNNNNNNNN-XXXXXXXXXXXXXXXXXXXXXXXX ernestgwilsonii/perceptron:v1.0.0
+```
+
 ### Future: https://github.com/sohlex/botkit-rasa

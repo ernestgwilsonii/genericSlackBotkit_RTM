@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Botkit using RTM (outbound websockets), no inbound ports (events API) needed!",
   "main": "bot.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node bot.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ernestgwilsonii/genericSlackBotkit_RTM.git"
@@ -26,6 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "botkit": "^0.7.0",
+    "moment-timezone": "^0.5.23",
+    "slack": "^11.0.1",
     "wordfilter": "^0.2.6"
   },
   "devDependencies": {}
