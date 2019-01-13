@@ -27,6 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.387.0",
     "botkit": "^0.7.0",
     "moment-timezone": "^0.5.23",
     "slack": "^11.0.1",
