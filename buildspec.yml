@@ -6,6 +6,9 @@ phases:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - sudo curl -sSL https://get.docker.com/ | sh
+      - sudo service docker stop
+      - sudo service docker start
+      - docker version
   build:
     commands:
       - echo Build started on `date`
