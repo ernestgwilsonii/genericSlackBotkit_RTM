@@ -11,10 +11,10 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t chatops/perceptron .
-      - docker tag chatops/perceptron:latest 511364101674.dkr.ecr.us-east-1.amazonaws.com/chatops/perceptron:latest
+      - docker tag chatops/perceptron:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/chatops/perceptron:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 511364101674.dkr.ecr.us-east-1.amazonaws.com/chatops/perceptron:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/chatops/perceptron:latest
   
