@@ -17,7 +17,7 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 511364101674.dkr.ecr.us-east-1.amazonaws.com/chatops/perceptron:latest
-      - printf '[{"name":"perceptron","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"perceptron","imageUri":"%s"}]' 511364101674.dkr.ecr.us-east-1.amazonaws.com/chatops/perceptron:latest > imagedefinitions.json
   artifacts:
     files: imagedefinitions.json
   
