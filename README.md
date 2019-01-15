@@ -23,13 +23,19 @@ Get a [Slack Bot API Token](https://my.slack.com/apps/new/A0F7YS25R-bots)
 Launch the bot:
 
 ```
-token=YourSlackTokenGoesHere node .
+slackToken=YourSlackTokenGoesHere node bot.js
 ```
 
 Docker:
 ```
 ./docker_buil.sh
-docker run -it --rm --name perceptron -e token=xoxb-NNNNNNNNNNN-NNNNNNNNNNNN-XXXXXXXXXXXXXXXXXXXXXXXX ernestgwilsonii/perceptron:v1.0.0
+docker run -it --rm --name perceptron -e slackToken=xoxb-NNNNNNNNNNN-NNNNNNNNNNNN-XXXXXXXXXXXXXXXXXXXXXXXX ernestgwilsonii/perceptron:v1.0.0
+```
+
+AWS Secrets Manager (optional):
+```
+aws secretsmanager --region us-east-1 create-secret --name botkit --description "Botkit Secrets" --secret-string file://secrets.json
+aws secretsmanager --region us-east-1 get-secret-value --secret-id botkit
 ```
 
 ### Future: https://github.com/sohlex/botkit-rasa

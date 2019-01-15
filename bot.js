@@ -1,22 +1,30 @@
 ////////////////////////////////////////////////////////////////////////////////
 const Botkit = require('botkit');
+const { getAwsSecrets } = require('./lib/getAwsSecrets');
 const { slackGetUsersInfo } = require('./lib/slackGetUsersInfo');
 const { chatOpsLogger } = require('./lib/chatOpsLogger');
 ////////////////////////////////////////////////////////////////////////////////
 (async function () {
     try {
-        // Make sure we have a Slack token
-        if (process.env.token) {
-            console.log("INFORMATIONAL: Slack environment token found");
+        // Try to get a Slack token via environment variable (dev)
+        if (process.env.slackToken) {
+            console.log("INFORMATIONAL: Slack environment variable slackToken found");
         } else {
+            // Try to get Slack token via AWS Secrets Manager (prod)
             console.log("NOTICE: Attempting to get Slack token via AWS Secrets Manager");
-            // Try to get Slack token via AWS Secrets Manager
-            // let secretToken = await getEncToken();
+            let secrets = await getAwsSecrets();
+            let keys = Object.keys(secrets);
 
-            // Failed to get a Slack token via environment variable and AWS Secrets Manager
-            console.error("ERROR: Specify a Slack bot token!");
-            devUsageTip();
-            process.exit(1);
+            keys.forEach(key => {
+                process.env[key] = secrets[key]
+            });
+
+            if (!process.env.slackToken) {
+                // Failed to get a Slack token via environment variable and AWS Secrets Manager
+                console.error("ERROR: Specify a Slack bot token!");
+                devUsageTip();
+                process.exit(1);
+            }
         }
 
         // Create the Botkit controller
@@ -28,7 +36,7 @@ const { chatOpsLogger } = require('./lib/chatOpsLogger');
 
         // Spawn a single instance of the bot and connect Slack
         let bot = controller.spawn({
-            token: process.env.token,
+            token: process.env.slackToken,
         }).startRTM();
 
         // Load the skills
@@ -39,9 +47,9 @@ const { chatOpsLogger } = require('./lib/chatOpsLogger');
 
         // Display CLI help
         function devUsageTip() {
-            console.log("Execute your bot application like this:");
+            console.log("Launch your bot like this:");
             console.log("npm install");
-            console.log("token=YourSlackToken node bot.js");
+            console.log("slackToken=YourSlackToken node bot.js");
             console.log("Get a Slack token here: https://my.slack.com/apps/new/A0F7YS25R-bots");
         }
 
